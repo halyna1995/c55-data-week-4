@@ -13,7 +13,7 @@ DATA_DIR = Path("data")
 OUTPUT_DIR = Path("output")
 
 
-GITHUB_USERNAME = "<halyna1995>"
+GITHUB_USERNAME = "halyna1995"
 
 
 def run() -> None:
