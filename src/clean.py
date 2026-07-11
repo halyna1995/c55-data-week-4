@@ -48,8 +48,10 @@ def clean_sales(sales: pd.DataFrame) -> pd.DataFrame:
 
     cleaned = cleaned.dropna(subset=["date"])
 
-    cleaned = cleaned.drop_duplicates(subset="transaction_id", keep="first")
-# Clip prices above 1000 to handle outliers.
+   cleaned = cleaned.drop_duplicates(subset="transaction_id", keep="first")
+
+    # Clip prices above 1000 to handle outliers.
+
     cleaned["price"] = cleaned["price"].clip(upper=1000)
 
     return cleaned
