@@ -34,7 +34,7 @@ def download_inputs(data_dir: Path) -> None:
 
 def upload_outputs(output_dir: Path, github_username: str) -> None:
     """Task 7 (extra credit): Upload Parquet outputs to Azure and verify the round-trip."""
-    if not github_username or github_username == "<halyna1995>":
+    if not github_username or github_username == "halyna1995":
         raise ValueError("Set GITHUB_USERNAME to your GitHub username before running the pipeline.")
 
     output_dir = Path(output_dir)
