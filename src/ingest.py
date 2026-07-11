@@ -60,9 +60,14 @@ def upload_outputs(output_dir: Path, github_username: str) -> None:
             blob_client.upload_blob(f, overwrite=True)
         logging.info("Uploaded %s to container %s", parquet_file.name, container_name)
 
-    local_customer_summary = output_dir / "customer_summary.parquet"
+    local_customer_summary_path = output_dir / "customer_summary.parquet"
+    local_customer_summary = pd.read_parquet(local_customer_summary_path)
+
     blob_client = container.get_blob_client("customer_summary.parquet")
-    remote_customer_summary = pd.read_parquet(io.BytesIO(blob_client.download_blob().readall()))
+    remote_customer_summary = pd.read_parquet(
+    io.BytesIO(blob_client.download_blob().readall())
+    )
+
     assert len(remote_customer_summary) == len(local_customer_summary)
 
     logging.info(
